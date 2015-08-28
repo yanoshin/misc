@@ -1,0 +1,55 @@
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="yanoshin">Tweet</a>
+<script>
+    window.twttr = function (d, s, id) {
+        var     js,
+                t = window.twttr || {}
+                fjs = d.getElementsByTagName(s)[0],
+                p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            console.log("ready event");
+            console.log(f);
+            t._e.push(f);
+        };
+
+        return t;
+    }(document, 'script', 'twitter-wjs');
+
+
+    function clickEvent(ev) {
+        console.log("clickEvent");
+        console.log(ev);
+    }
+    function tweetIntent(ev) {
+        console.log("tweetIntent");
+        console.log(ev);
+    }
+    function retweetIntent(ev) {
+        console.log("retweetIntent");
+        console.log(ev);
+    }
+    function favIntent(ev) {
+        console.log("favIntent");
+        console.log(ev);
+    }
+    function followIntent(ev) {
+        console.log("followIntent");
+        console.log(ev);
+    }
+
+    // Wait for the asynchronous resources to load
+    twttr.ready(function (twttr) {
+        // Now bind our custom intent events
+        twttr.events.bind('click', clickEvent);
+        twttr.events.bind('tweet', tweetIntent);
+        twttr.events.bind('retweet', retweetIntent);
+        twttr.events.bind('favorite', favIntent);
+        twttr.events.bind('follow', followIntent);
+    });
+</script>
