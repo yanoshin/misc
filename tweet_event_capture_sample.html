@@ -1,9 +1,9 @@
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="yanoshin">Tweet</a>
 <script>
     window.twttr = function (d, s, id) {
-        var     js,
+        var js,
                 t = window.twttr || {}
-                fjs = d.getElementsByTagName(s)[0],
+        fjs = d.getElementsByTagName(s)[0],
                 p = /^http:/.test(d.location) ? 'http' : 'https';
         if (d.getElementById(id)) return t;
         js = d.createElement(s);
@@ -12,7 +12,7 @@
         fjs.parentNode.insertBefore(js, fjs);
 
         t._e = [];
-        t.ready = function(f) {
+        t.ready = function (f) {
             console.log("ready event");
             console.log(f);
             t._e.push(f);
@@ -29,6 +29,8 @@
     function tweetIntent(ev) {
         console.log("tweetIntent");
         console.log(ev);
+        document.getElementById('result').innerText = 'ツイートしてくれました';
+
     }
     function retweetIntent(ev) {
         console.log("retweetIntent");
@@ -53,3 +55,5 @@
         twttr.events.bind('follow', followIntent);
     });
 </script>
+
+<div id="result">ツイートの結果は？</div>
